@@ -24,12 +24,12 @@ class Animation:
                 self.frame = 0
 
     def draw(self, screen, x, y):
-        if (
-            self.sprite_list[self.frame][0]
-            .get_rect()
-            .collidepoint(*pygame.mouse.get_pos())
-        ):
+        pos = pygame.mouse.get_pos()
+        is_collide = self.sprite_list[self.frame][0].get_rect()
+
+        if is_collide.collidepoint(pos):
             screen.blit(self.sprite_list[self.frame][1], (x, y))
+            print(is_collide)
 
         screen.blit(self.sprite_list[self.frame][0], (x, y))
 
